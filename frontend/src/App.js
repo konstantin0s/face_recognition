@@ -8,10 +8,11 @@ import FaceRecognition from './components/FaceRecognition';
 import Rank from './components/Rank';
 import Particles from 'react-particles-js';
 import Clarifai, { COLOR_MODEL } from "clarifai";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 
 const app = new Clarifai.App({
-  apiKey: '365c0e94cb024a0aab6ec56b8b4a4f79'
+  apiKey: API_KEY
 })
 
 const particlesOptions = {
