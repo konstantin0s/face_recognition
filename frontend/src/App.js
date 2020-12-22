@@ -7,12 +7,10 @@ import ImageLinkForm from './components/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition';
 import Rank from './components/Rank';
 import Particles from 'react-particles-js';
-import Clarifai, { COLOR_MODEL } from "clarifai";
-const API_KEY = process.env.REACT_APP_API_KEY;
-
+import Clarifai, { FACE_DETECT_MODEL } from "clarifai";
 
 const app = new Clarifai.App({
-  apiKey: API_KEY
+  apiKey: process.env.REACT_APP_CLIENT_ID
 })
 
 const particlesOptions = {
@@ -42,11 +40,12 @@ onInputChange = (event) => {
 
 onSubmit = () => {
   this.setState({imageUrl: this.state.input})
-  app.models.predict(Clarifai.COLOR_MODEL,
+  app.models.predict(Clarifai.FACE_DETECT_MODEL,
      this.state.input).then(
     function(response) {
       // do something with response
       console.log(response);
+      console.log(response.outputs[0].data.regions[0].region_info.bounding.box);
     },
     function(err) {
       // there was an error
