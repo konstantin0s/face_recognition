@@ -7,3 +7,12 @@ nav {
     font-weight: 700;
     cursor: pointer;
 }
+
+nav p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-right:40px;
+    position: relative;
+    font-size: 1.2em;
+}

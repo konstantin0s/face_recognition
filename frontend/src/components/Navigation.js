@@ -1,12 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../css/nav.css';
 
-export default class Navigation extends Component {
-    render() {
-        return (
-            <nav>
-            <p>Sign out</p>
-            </nav>
-        )
-    }
-}
+const Navigation =({onRouteChange, isSignedIn}) => {
+
+    
+            if (isSignedIn) {
+                return (
+                    <nav>
+                    <p onClick={() => onRouteChange('signout')}>Sign out</p>
+                    </nav>
+                )
+            } else {
+                return (
+                    <nav>
+                    <p onClick={() => onRouteChange('signin')}>Sign In</p>
+
+                    <p onClick={() => onRouteChange('register')}>Register</p>
+                    </nav>
+                )
+            }
+            
+    
+};
+
+export default Navigation;
